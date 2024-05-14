@@ -17,6 +17,6 @@ Press 6 for main menu
 
 This is a sample output of command line showing different admin features.
 
-4: Java documentation for this project is present under javadocs folder. Please download the whole folder and click on index.html file to navigate to home page of documentation. 
+4. Java documentation for this project is present under javadocs folder. Please download the whole folder and click on index.html file to navigate to home page of documentation. 
 
    
