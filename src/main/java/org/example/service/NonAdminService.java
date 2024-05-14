@@ -17,8 +17,7 @@ import java.util.UUID;
 /**
  * The type Non admin service.
  */
-public class NonAdminService implements UserService
-{
+public class NonAdminService implements UserService {
     /**
      * The User type.
      */
@@ -34,17 +33,15 @@ public class NonAdminService implements UserService
      * @param userType the user type
      * @param db       the db
      */
-    public NonAdminService(String userType,Database db)
-    {
-        this.userType=userType;
-        this.db=db;
+    public NonAdminService(String userType, Database db) {
+        this.userType = userType;
+        this.db = db;
     }
 
     /**
-     * Create user.
+     * Create new user.
      */
-    public void createUser()
-    {
+    public void createUser() {
         try {
             Scanner sc = new Scanner(System.in);
             String name, mobileNumber, passengerType;
@@ -73,30 +70,26 @@ public class NonAdminService implements UserService
             db.getPassengerDB().put(passenger.getID(), passenger);
             System.out.println("User enrolled successfully");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Facing issue in creating a user with exception " + e);
         }
     }
 
     /**
-     * Subscribe package utils string.
+     * Core logic to subscribe a particular package.
      *
      * @param passenger       the passenger
      * @param activity        the activity
      * @param destinationName the destination name
      * @return the string
      */
-    public String subscribePackageUtils(Passenger passenger,Activity activity,String destinationName)
-    {
+    public String subscribePackageUtils(Passenger passenger, Activity activity, String destinationName) {
         UUID activityID = activity.getActivityID();
-        if (activity.getAvailableCapacity() == 0)
-        {
+        if (activity.getAvailableCapacity() == 0) {
             return "Activity slots are full please try for other activities";
         }
 
-        if (passenger.getPassengerType().equals("Standard") || passenger.getPassengerType().equals("Gold"))
-        {
+        if (passenger.getPassengerType().equals("Standard") || passenger.getPassengerType().equals("Gold")) {
             int discount = passenger.getDiscount();
             int discountedValue = activity.getCost() - (activity.getCost() * discount) / 100;
             if (discountedValue <= passenger.getBalance()) {
@@ -104,14 +97,10 @@ public class NonAdminService implements UserService
                 passenger.addActivity(destinationName, activityID, discountedValue);
                 activity.setCapacity(activity.getAvailableCapacity() - 1);
                 return "Successfully subscribed to activity " + activity.getActivityName() + " with destination " + destinationName;
-            }
-            else
-            {
+            } else {
                 return "Insufficient Balance";
             }
-        }
-        else
-        {
+        } else {
             passenger.addActivity(destinationName, activityID, 0);
             activity.setCapacity(activity.getAvailableCapacity() - 1);
             return "Successfully subscribed to activity " + activity.getActivityName() + " with destination " + destinationName;
@@ -119,10 +108,9 @@ public class NonAdminService implements UserService
     }
 
     /**
-     * Subscribe package.
+     * Subscribe a package
      */
-    public void subscribePackage()
-    {
+    public void subscribePackage() {
         try {
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter the passengerID");
@@ -132,8 +120,7 @@ public class NonAdminService implements UserService
             System.out.println("Enter the name of package you want to subscribe for");
             packageName = sc.next();
             TravelPackage travelPackage = db.getPackageDB().get(packageName);
-            if (travelPackage.getPassengerCapacity() == 0)
-            {
+            if (travelPackage.getPassengerCapacity() == 0) {
                 System.out.println("Package Capacity full please try for a different package");
                 return;
             }
@@ -152,26 +139,22 @@ public class NonAdminService implements UserService
             System.out.println("Enter the number of activities you want to subscribe for");
             int noOfActivities = sc.nextInt();
 
-            for (int i = 0; i < noOfActivities; i++)
-            {
+            for (int i = 0; i < noOfActivities; i++) {
                 System.out.println("Enter the destination name followed by activityID you want to subscribe for");
                 String destinationName = sc.next();
                 UUID activityID = UUID.fromString(sc.next());
                 Activity activity = db.getActivityDB().get(activityID);
-                System.out.println(subscribePackageUtils(passenger,activity,destinationName));
+                System.out.println(subscribePackageUtils(passenger, activity, destinationName));
             }
-        }
-        catch (Exception e)
-        {
-            System.out.println("Facing issue in subscribing a package with exception "+e);
+        } catch (Exception e) {
+            System.out.println("Facing issue in subscribing a package with exception " + e);
         }
     }
 
     /**
      * Show package itenary.
      */
-    public void showPackageItenary()
-    {
+    public void showPackageItenary() {
         try {
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter the package name you want to see details for");
@@ -191,20 +174,16 @@ public class NonAdminService implements UserService
 
                 }
             }
-        }
-        catch (Exception e)
-        {
-            System.out.println("Facing issue in displaying package itenary with exception "+e);
+        } catch (Exception e) {
+            System.out.println("Facing issue in displaying package itenary with exception " + e);
         }
     }
 
     /**
-     * Show available activities.
+     * Show activities with free slots
      */
-    public void showAvailableActivities()
-    {
-        try
-        {
+    public void showAvailableActivities() {
+        try {
             for (Map.Entry<String, Destination> entry : db.getDestinationDB().entrySet()) {
                 String destinationName = entry.getKey();
                 Destination generalDestination = entry.getValue();
@@ -218,47 +197,57 @@ public class NonAdminService implements UserService
                     }
                 }
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("Facing issue in showing available activities with exception " + e);
         }
     }
+
     @Override
-    public void startOperation()
-    {
-        while(true)
-        {
-            Scanner sc=new Scanner(System.in);
-            int x;
-            System.out.println("Press 1 for adding new passenger");
-            System.out.println("Press 2 for subscribing to a package");
-            System.out.println("Press 3 for viewing the itenary of travel package");
-            System.out.println("Press 4 for seeing currently available activities");
-            System.out.println("Press 5 for going to main menu");
-            x=sc.nextInt();
+    public void startOperation() {
+        try {
+            while (true) {
+                Scanner sc = new Scanner(System.in);
+                int x;
+                System.out.println("Press 1 for adding new passenger");
+                System.out.println("Press 2 for subscribing to a package");
+                System.out.println("Press 3 for viewing the itenary of travel package");
+                System.out.println("Press 4 for seeing currently available activities");
+                System.out.println("Press 5 for going to main menu");
+                x = sc.nextInt();
 
-            switch (x)
-            {
-                case 1:
-                    this.createUser();
-                    break;
+                switch (x) {
+                    case 1:
+                        System.out.println("##############################################");
+                        this.createUser();
+                        System.out.println("##############################################");
+                        break;
 
-                case 2:
-                    this.subscribePackage();
-                    break;
+                    case 2:
+                        System.out.println("##############################################");
+                        this.subscribePackage();
+                        System.out.println("##############################################");
+                        break;
 
-                case 3:
-                    this.showPackageItenary();
-                    break;
+                    case 3:
+                        System.out.println("##############################################");
+                        this.showPackageItenary();
+                        System.out.println("##############################################");
+                        break;
 
-                case 4:
-                    this.showAvailableActivities();
-                    break;
+                    case 4:
+                        System.out.println("##############################################");
+                        this.showAvailableActivities();
+                        System.out.println("##############################################");
+                        break;
 
-                case 5:
-                    return;
+                    case 5:
+                        return;
+                }
             }
+        }
+        catch (Exception e)
+        {
+            System.out.println("Facing issue with exception " + e);
         }
     }
 }

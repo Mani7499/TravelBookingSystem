@@ -3,7 +3,8 @@ package org.example.passenger;
 import java.util.UUID;
 
 /**
- * The type Transaction.
+ * The type Transaction is for tracking all transactions taking place.
+ * Have seprated it from passenger class following single responsibility principle
  */
 public class Transaction
 {
@@ -31,7 +32,6 @@ private UUID activityID;
     this.activityID=activityID;
     this.costOfActivity=costOfActivity;
 }
-
     /**
      * Gets transaction id.
      *

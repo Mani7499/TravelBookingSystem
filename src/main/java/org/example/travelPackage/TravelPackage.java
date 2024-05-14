@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * The interface Travel package.
+ * Making a general template of travel package by using interface.
+ * This will follow Open and Close Principle when we add a new type package
  */
 public interface TravelPackage
 {
@@ -20,15 +21,15 @@ public interface TravelPackage
      */
     String name="";
     /**
-     * The constant passengerCapacity.
+     * The constant passengerCapacity for maximum number of passenger in this package
      */
     int passengerCapacity=0;
     /**
-     * The constant listOfDestination.
+     * The constant listOfDestination covered in this package
      */
     List<Destination> listOfDestination=new ArrayList<>();
     /**
-     * The constant listOfPassenger.
+     * The constant listOfPassengers enrolled to this package
      */
     List<UUID> listOfPassenger=new ArrayList<>();
 
@@ -52,16 +53,14 @@ public interface TravelPackage
      * @return the list of destination
      */
     public List<Destination> getListOfDestination();
-
     /**
      * Gets list of passenger.
      *
      * @return the list of passenger
      */
     public List<UUID> getListOfPassenger();
-
     /**
-     * Add passenger.
+     * Add passenger to package
      *
      * @param passengerID the passenger id
      */

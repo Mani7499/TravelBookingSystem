@@ -7,19 +7,15 @@ import org.example.travelPackage.TravelPackage;
 
 import java.util.HashMap;
 import java.util.UUID;
-
 /**
- * The type Database.
+ * Created for mocking databases through in memory hashmaps
  */
 public class Database
 {
-
     private static Database db;
-
     /**
      * The Destination db.
      */
-//have changed the destination to genral destination and same for the activity.
     HashMap<String,Destination>destinationDB;
     /**
      * The Activity db.
@@ -33,7 +29,6 @@ public class Database
      * The Package db.
      */
     HashMap<String, TravelPackage>packageDB;
-
     /**
      * Instantiates a new Database.
      */
@@ -82,7 +77,7 @@ public class Database
     }
 
     /**
-     * Create db database.
+     * Create db database using Singleton Design Pattern
      *
      * @return the database
      */

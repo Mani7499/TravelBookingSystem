@@ -6,6 +6,8 @@ import java.util.UUID;
 
 /**
  * The interface Destination.
+ * Making a general template of travel destination by using interface.
+ * This will follow Open and Close Principle when we add a new type destination
  */
 public interface Destination
 {

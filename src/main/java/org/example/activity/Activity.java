@@ -4,6 +4,8 @@ import java.util.UUID;
 
 /**
  * The interface Activity.
+ * Making a general template of Activity  by using interface.
+ * This will follow Open and Close Principle when we add a new type activity
  */
 public interface Activity
 {
@@ -24,7 +26,7 @@ public interface Activity
      */
     int cost=0;
     /**
-     * The constant availableCapacity.
+     * The constant availableCapacity in this activity
      */
     int availableCapacity=0;
 

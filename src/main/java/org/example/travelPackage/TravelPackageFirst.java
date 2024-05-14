@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * The type Travel package first.
+ * The type Travel package first, is a type of tour package
  */
 public class TravelPackageFirst implements TravelPackage
 {

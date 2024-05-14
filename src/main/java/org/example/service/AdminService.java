@@ -60,7 +60,7 @@ public class AdminService implements UserService
             nameOfActivity = sc.next();
             System.out.println("Enter the cost of activity: ");
             costOfActivity = sc.nextInt();
-            //Need to take whole line as input
+            sc.nextLine();
             System.out.println("Enter the description of activity: ");
             descriptionOfActivity = sc.nextLine();
             System.out.println("Enter the capacity of activity: ");
@@ -80,7 +80,7 @@ public class AdminService implements UserService
 }
 
     /**
-     * Update destination activity.
+     * Update activity for a particular destination
      */
     public void updateDestinationActivity()
 {
@@ -115,7 +115,7 @@ public class AdminService implements UserService
 }
 
     /**
-     * Create package.
+     * Create package from chosen destination
      */
     public void createPackage()
 {
@@ -179,7 +179,7 @@ public class AdminService implements UserService
 }
 
     /**
-     * Passenger details.
+     * Display Passenger details.
      */
     public void passengerDetails()
 {
@@ -225,23 +225,33 @@ public void startOperation()
 
             switch (x) {
                 case 1:
+                    System.out.println("##############################################");
                     this.addDestination();
+                    System.out.println("##############################################");
                     break;
 
                 case 2:
+                    System.out.println("##############################################");
                     this.updateDestinationActivity();
+                    System.out.println("##############################################");
                     break;
 
                 case 3:
+                    System.out.println("##############################################");
                     this.createPackage();
+                    System.out.println("##############################################");
                     break;
 
                 case 4:
+                    System.out.println("##############################################");
                     this.displayPackageEnrollementDetails();
+                    System.out.println("##############################################");
                     break;
 
                 case 5:
+                    System.out.println("##############################################");
                     this.passengerDetails();
+                    System.out.println("##############################################");
                     break;
 
                 case 6:
