@@ -16,7 +16,9 @@ Please go through the readme section for setting up and understanding code:
     <br>Press 5 for displaying details of each passenger</br>
     <br> Press 6 for main menu</br>
     </i>
+    
    This is a sample output of command line showing different admin features.
+   
 5. Java documentation for this project is present under javadocs folder. Please download the whole folder and click on index.html file to navigate to home page of documentation. 
 6. For low level design and high level design of this project files TravelBooking_LLD and TravelBooking_HLD files are present.
 
